@@ -21,7 +21,9 @@ car: {
   },
   office:{
     type: String,
-    required: true
+    required: true,
+    enum:['Berlin', 'Granada', 'Amsterdam'],
+    
   }
 })
 
