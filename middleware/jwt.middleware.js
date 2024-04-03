@@ -1,23 +1,20 @@
+const { expressjwt: jwt } = require("express-jwt");
 
-const jwt = require('jsonwebtoken');
-
-const verifyToken = (req, res, next) => {
-  const token = req.header('auth-token');
-  if (!token) return res.status(401).send('Access denegate');
-
-  try {
-    const verified = jwt.verify(token, process.env.JWT_SECRET);
-    req.user = verified;
-    next();
-  } catch (err) {
-    res.status(400).send('Not valid Token');
+const getTokenFromHeaders = (req) => {
+  if (
+    req.headers.authorization &&
+    req.headers.authorization.split(" ")[0] === "Bearer"
+  ) {
+    const token = req.headers.authorization.split(" ")[1];
+    return token;
+  } else {
+    return null;
   }
 };
-
-
-const isAdmin = (req, res, next) => {
-  if (req.user.role !== 'admin') return res.status(403).send('Needs to be admin');
-  next();
-};
-
-module.exports = { verifyToken, isAdmin };
+const isAuthenticated = jwt({
+  secret: process.env.TOKEN_SECRET,
+  algorithms: ["HS256"],
+  requestProperty: "payload",
+  getToken: getTokenFromHeaders,
+});
+module.exports = { isAuthenticated };
