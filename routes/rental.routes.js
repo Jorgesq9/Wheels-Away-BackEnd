@@ -23,7 +23,7 @@ router.get("/:userId/:carId",(req, res, next) => {
     const { userId, carId } = req.params;
     console.log(carId)
     Rental.find({ user: userId, car: carId})
-    .populate('Car')
+    .populate('car')
     .then((rentalsIdCar) => {
         console.log(rentalsIdCar)
         res.status(200).json(rentalsIdCar)
