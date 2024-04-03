@@ -69,7 +69,7 @@ router.delete("/:carId", (req, res, next) => {
 
   router.put("/:carId", (req, res, next) => {
     const { carId } = req.params;
-    CohortModel.findByIdAndUpdate(carId, req.body, { new: true })
+        Car.findByIdAndUpdate(carId, req.body, { new: true })
       .then((updatedCar) => {
         res.status(200).json(updatedCar);
         console.log("updated by Id", updatedCar);
