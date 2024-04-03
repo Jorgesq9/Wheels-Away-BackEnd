@@ -9,7 +9,6 @@ const userSchema = new Schema(
     },
     email: {
       type: String,
-      index: true,
       required: true,
       unique: true,
     },
@@ -22,7 +21,6 @@ const userSchema = new Schema(
     },
     driverLicense: {
       type: String,
-      required: true,
     },
   },
   // Add timestamps to the schema (createdAt, updatedAt)
