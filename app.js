@@ -33,6 +33,10 @@ app.use("/api/users", isAuthenticated, userRoutes );
 const carsRoutes = require("./routes/car.routes");
 app.use("/api/cars", carsRoutes );
 
+//rentals routes
+const rentalsRoutes = require("./routes/rental.routes");
+app.use("/api/rentals", rentalsRoutes );
+
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes
 require("./error-handling")(app);
 
