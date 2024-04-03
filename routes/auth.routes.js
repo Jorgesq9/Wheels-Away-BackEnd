@@ -13,6 +13,7 @@ router.post('/signup', (req, res) =>{
             ...req.body,
             password: hashedPassword
         })
+        console.log(hashedPassword)
         return newUSer.save()
     })
     .then(savedUser => res.status(201).send(savedUser))
