@@ -29,16 +29,16 @@ router.get("/:userId/:carId",(req, res, next) => {
     .then((rentalsIdCar) => {
         console.log(rentalsIdCar)
         res.status(200).json(rentalsIdCar)
-
-//     })
-//     .catch((err) => {
-//         res
-//           .status(500)
-//           .json({ message: "error while fetching car by the Id", err });
-//         console.log("error while fetching car by the Id", err);
-//         next(err);
-//       });
-// });
+    
+    })
+    .catch((err) => {
+        res
+          .status(500)
+          .json({ message: "error while fetching car by the Id", err });
+        console.log("error while fetching car by the Id", err);
+        next(err);
+      });
+});
 
 // get Single rental by Id 
 router.get("/details/:rentalId",(req, res, next) => {
@@ -103,4 +103,5 @@ router.put("/:RentalId", (req, res, next) => {
       });
   });
 
+    
   module.exports = router;
