@@ -1,4 +1,5 @@
 const router = require("express").Router();
+const { populate } = require("../models/Car.model");
 const Rental = require("../models/Rental.model");
 
 // get all Rentals by userId
@@ -6,6 +7,7 @@ router.get("/:userId",(req, res, next) => {
     const { userId } = req.params;
 
     Rental.find({user: userId})
+    .populate('car')
     .then((foundRentalsByUserId) => {
         res.status(200).json(foundRentalsByUserId)
     })
@@ -18,27 +20,45 @@ router.get("/:userId",(req, res, next) => {
       });
 });
 
-//get rental a single car by userId and carID
-router.get("/:userId/:carId",(req, res, next) => {
-    const { userId, carId } = req.params;
-    console.log(carId)
-    Rental.find({ user: userId, car: carId})
-    .populate('Car')
-    .then((rentalsIdCar) => {
-        console.log(rentalsIdCar)
-        res.status(200).json(rentalsIdCar)
+// //get rental a single car by userId and carID
+// router.get("/:userId/:carId",(req, res, next) => {
+//     const { userId, carId } = req.params;
+//     console.log(carId)
+//     Rental.find({ user: userId, car: carId})
+//     .populate('Car')
+//     .then((rentalsIdCar) => {
+//         console.log(rentalsIdCar)
+//         res.status(200).json(rentalsIdCar)
 
+//     })
+//     .catch((err) => {
+//         res
+//           .status(500)
+//           .json({ message: "error while fetching car by the Id", err });
+//         console.log("error while fetching car by the Id", err);
+//         next(err);
+//       });
+// });
+
+// get Single rental by Id 
+router.get("/details/:rentalId",(req, res, next) => {
+    const { rentalId } = req.params;
+    
+    Rental.findById(rentalId)
+    .populate('car')
+    .populate('user')
+    .then((foundRental) => {
+        res.status(200).json(foundRental)
+        console.log("este es el rentalId", rentalId);
     })
     .catch((err) => {
         res
           .status(500)
-          .json({ message: "error while fetching car by the Id", err });
-        console.log("error while fetching car by the Id", err);
+          .json({ message: "error while fetching rental by the Id", err });
+        console.log("error while fetching rental by the Id", err);
         next(err);
       });
 });
-// get Single Rental by Id 
-
 // Create a new rental 
     router.post("", (req, res, next) =>{
         console.log("req body", req.body)
@@ -58,7 +78,6 @@ router.get("/:userId/:carId",(req, res, next) => {
         .then((deletedRental) =>{
             res.status(200).json(deletedRental)
             console.log("Car rental deleted successfully", deletedRental)
-            next(err);
         })
         .catch((err) =>{
             res

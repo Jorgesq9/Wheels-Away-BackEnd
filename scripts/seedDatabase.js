@@ -580,6 +580,22 @@ const addDataToDB = async() => {
             });
             await rental.save();
         }
+        for (let i = 0; i < 5; i++) {
+          const user = users[1];
+          const car = cars[i];
+          const startDate = new Date(+(new Date()) - Math.floor(Math.random() * 10000000000));
+          const endDate = new Date(startDate.getTime() + Math.floor(Math.random() * 1000000000));
+          const totalPrice = Math.floor(Math.random() * 1000);
+          const rental = new Rental({
+              car: car._id,
+              user: user._id,
+              startDate,
+              endDate,
+              totalPrice,
+          });
+          await rental.save();
+      }
+        
         console.log("rentals added")
     } 
     catch (err) {
