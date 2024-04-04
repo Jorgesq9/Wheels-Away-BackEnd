@@ -20,15 +20,15 @@ router.get("/:userId",(req, res, next) => {
       });
 });
 
-// //get rental a single car by userId and carID
-// router.get("/:userId/:carId",(req, res, next) => {
-//     const { userId, carId } = req.params;
-//     console.log(carId)
-//     Rental.find({ user: userId, car: carId})
-//     .populate('Car')
-//     .then((rentalsIdCar) => {
-//         console.log(rentalsIdCar)
-//         res.status(200).json(rentalsIdCar)
+//get rental a single car by userId and carID
+router.get("/:userId/:carId",(req, res, next) => {
+    const { userId, carId } = req.params;
+    console.log(carId)
+    Rental.find({ user: userId, car: carId})
+    .populate('car')
+    .then((rentalsIdCar) => {
+        console.log(rentalsIdCar)
+        res.status(200).json(rentalsIdCar)
 
 //     })
 //     .catch((err) => {
