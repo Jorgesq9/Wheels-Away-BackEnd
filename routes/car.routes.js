@@ -1,5 +1,33 @@
 const router = require("express").Router();
 const Car = require("../models/Car.model");
+const Rental = require("../models/Rental.model")
+
+// filter by cars availables 
+
+router.get("/available", (req, res, next) => {
+  const { startDate, endDate } = req.query;
+
+  Rental.find({
+      $or: [
+          { startDate: { $lte: endDate }, endDate: { $gte: startDate } },
+      ]
+  }).populate('car')
+  .then(rentedCars => {
+    
+      const rentedCarIds = rentedCars.map(rental => rental.car._id.toString());
+
+      
+      return Car.find({ _id: { $nin: rentedCarIds } });
+  })
+  .then(availableCars => {
+      res.status(200).json(availableCars);
+  })
+  .catch(err => {
+      console.error("Error fetching available cars", err);
+      res.status(500).json({ message: "Error fetching available cars", err });
+      next(err);
+  });
+});
 
 // get all cars
 router.get("",(req,res,next) => {
@@ -79,5 +107,6 @@ router.delete("/:carId", (req, res, next) => {
         next(err);
       });
   });
+
 
   module.exports = router;

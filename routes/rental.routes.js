@@ -2,6 +2,8 @@ const router = require("express").Router();
 const { populate } = require("../models/Car.model");
 const Rental = require("../models/Rental.model");
 
+
+
 // get all Rentals by userId
 router.get("/:userId",(req, res, next) => {
     const { userId } = req.params;
@@ -101,25 +103,34 @@ router.get("/details/:rentalId",(req, res, next) => {
 //         next(err);
 //       });
 //   });
-router.put("/:RentalId", async (req, res, next) => {
+
+// Change it in to .then .catch to follow the flow of the code 
+
+
+router.put("/:RentalId", (req, res, next) => {
     const { RentalId } = req.params;
-    try {
-        const rentalToUpdate = await Rental.findById(RentalId).populate('car');
-        const { startDate, endDate } = req.body;
-        const differenceInTime = new Date(endDate) - new Date(startDate);
-        const differenceInDays = Math.ceil(differenceInTime / (1000 * 3600 * 24));
-        const updatedTotalPrice = differenceInDays * rentalToUpdate.car.pricePerDay;
+    
+    Rental.findById(RentalId).populate('car')
+        .then(rentalToUpdate => {
+            const { startDate, endDate } = req.body;
+            const differenceInTime = new Date(endDate) - new Date(startDate);
+            const differenceInDays = Math.ceil(differenceInTime / (1000 * 3600 * 24));
+            const updatedTotalPrice = differenceInDays * rentalToUpdate.car.pricePerDay;
 
-        const updatedRental = await Rental.findByIdAndUpdate(RentalId, {
-            ...req.body,
-            totalPrice: updatedTotalPrice
-        }, { new: true }).populate('car').populate('user');
-
-        res.status(200).json(updatedRental);
-    } catch (err) {
-        console.log("Error making a reservation", err);
-        next(err);
-    }
+            return Rental.findByIdAndUpdate(RentalId, {
+                ...req.body,
+                totalPrice: updatedTotalPrice
+            }, { new: true }).populate('car').populate('user');
+        })
+        .then(updatedRental => {
+            res.status(200).json(updatedRental);
+        })
+        .catch(err => {
+            console.log("Error making a reservation", err);
+            next(err);
+        });
 });
+
+
 
   module.exports = router;
