@@ -25,7 +25,7 @@ router.get("/:userId",(req, res, next) => {
 //     const { userId, carId } = req.params;
 //     console.log(carId)
 //     Rental.find({ user: userId, car: carId})
-//     .populate('Car')
+//     .populate('car')
 //     .then((rentalsIdCar) => {
 //         console.log(rentalsIdCar)
 //         res.status(200).json(rentalsIdCar)
@@ -89,18 +89,37 @@ router.get("/details/:rentalId",(req, res, next) => {
     })
 
 //modify a rental 
-
-router.put("/:RentalId", (req, res, next) => {
+// router.put("/:RentalId", (req, res, next) => {
+//     const { RentalId } = req.params;
+//     Rental.findByIdAndUpdate(RentalId, req.body, { new: true })
+//       .then((updatedRental) => {
+//         res.status(200).json(updatedRental);
+//         console.log("updated by Id", updatedRental);
+//       })
+//       .catch((err) => {
+//         console.log(err);
+//         next(err);
+//       });
+//   });
+router.put("/:RentalId", async (req, res, next) => {
     const { RentalId } = req.params;
-    Rental.findByIdAndUpdate(RentalId, req.body, { new: true })
-      .then((updatedRental) => {
+    try {
+        const rentalToUpdate = await Rental.findById(RentalId).populate('car');
+        const { startDate, endDate } = req.body;
+        const differenceInTime = new Date(endDate) - new Date(startDate);
+        const differenceInDays = Math.ceil(differenceInTime / (1000 * 3600 * 24));
+        const updatedTotalPrice = differenceInDays * rentalToUpdate.car.pricePerDay;
+
+        const updatedRental = await Rental.findByIdAndUpdate(RentalId, {
+            ...req.body,
+            totalPrice: updatedTotalPrice
+        }, { new: true }).populate('car').populate('user');
+
         res.status(200).json(updatedRental);
-        console.log("updated by Id", updatedRental);
-      })
-      .catch((err) => {
-        console.log(err);
+    } catch (err) {
+        console.log("Error making a reservation", err);
         next(err);
-      });
-  });
+    }
+});
 
   module.exports = router;
