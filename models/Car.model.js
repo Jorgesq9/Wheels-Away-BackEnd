@@ -27,10 +27,26 @@ const carSchema = new Schema(
         required: true,
         unique: true,
       },
+      doors: {
+        type: String,
+        required: true,
+      },
+      passengers: {
+        type: String,
+        required: true,
+      },
+      transmission: {
+        type: String,
+        required: true,
+      },
+      rating: {
+        type: Number,
+        required: true,
+      },
       extras: {
         // enum type
         type: [String],
-        enum: ['GPS', 'Radio', 'Sunroof', 'Leather seats'],
+        enum: ['GPS', 'Radio', 'Sunroof', 'Leather seats','Autopilot','Off-road package','Heated seats'],
       },
       pricePerDay: {
         type: Number,
