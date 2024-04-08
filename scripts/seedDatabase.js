@@ -5,13 +5,12 @@ const User = require('../models/User.model')
 const Rental = require('../models/Rental.model')
 const carsData = [
   {
-    make: 'Dacia',
-    model: 'Sandero',
+    make: 'Opel',
+    model: 'Corsa',
     year: 2020,
     color: 'Blue',
     images: [
-      'https://source.unsplash.com/600x600/?car&id=35&image=1',
-      'https://source.unsplash.com/600x600/?car&id=35&image=2',
+      'https://www.sixt.com/fileadmin2/files/global/sideview/user_upload/fleet/png/752x500/opel-corsa-5d-white-2021.png',
     ],
     licensePlate: '2345WXY',
     extras: ['GPS', 'Radio', 'Sunroof', 'Leather seats'],
@@ -22,13 +21,12 @@ const carsData = [
     transmission: 'Manual'
   },
   {
-    make: 'Toyota',
-    model: 'Corolla',
+    make: 'Peugeot',
+    model: '208',
     year: 2018,
     color: 'Red',
     images: [
-      'https://source.unsplash.com/600x600/?car&id=36&image=1',
-      'https://source.unsplash.com/600x600/?car&id=36&image=2',
+      'https://www.sixt.com/fileadmin2/files/global/sideview/user_upload/fleet/png/752x500/peugeot-208-5d-white-2021.png',
     ],
     licensePlate: '3456XYZ',
     extras: ['GPS', 'Radio', 'Sunroof'],
@@ -39,13 +37,12 @@ const carsData = [
     transmission: 'Automatic'
   },
   {
-    make: 'Honda',
-    model: 'Civic',
+    make: 'Peugeot',
+    model: '308',
     year: 2019,
     color: 'Black',
     images: [
-      'https://source.unsplash.com/600x600/?car&id=37&image=1',
-      'https://source.unsplash.com/600x600/?car&id=37&image=2',
+      'https://www.sixt.com/fileadmin2/files/global/sideview/user_upload/fleet/png/752x500/peugeot-308-5d-black-2021.png',
     ],
     licensePlate: '4567ZAB',
     extras: ['GPS', 'Radio'],
@@ -56,13 +53,12 @@ const carsData = [
     transmission: 'Manual'
   },
   {
-    make: 'Ford',
-    model: 'F-150',
+    make: 'Seat',
+    model: 'Arona',
     year: 2021,
     color: 'White',
     images: [
-      'https://source.unsplash.com/600x600/?car&id=38&image=1',
-      'https://source.unsplash.com/600x600/?car&id=38&image=2',
+      'https://www.sixt.com/fileadmin2/files/global/sideview/user_upload/fleet/png/752x500/seat-arona-suv-white-2021.png',
     ],
     licensePlate: '5678ABC',
     extras: ['GPS', 'Sunroof', 'Leather seats'],
@@ -73,13 +69,12 @@ const carsData = [
     transmission: 'Automatic'
   },
   {
-    make: 'Chevrolet',
-    model: 'Camaro',
+    make: 'Seat',
+    model: 'Ateca',
     year: 2017,
     color: 'Yellow',
     images: [
-      'https://source.unsplash.com/600x600/?car&id=39&image=1',
-      'https://source.unsplash.com/600x600/?car&id=39&image=2',
+      'https://www.sixt.com/fileadmin2/files/global/sideview/user_upload/fleet/png/752x500/seat-ateca-suv-white-2023.png',
     ],
     licensePlate: '6789BCD',
     extras: ['GPS', 'Radio', 'Leather seats'],
@@ -90,13 +85,12 @@ const carsData = [
     transmission: 'Manual'
   },
   {
-    make: 'Nissan',
-    model: 'Altima',
+    make: 'Skoda',
+    model: 'Karoq',
     year: 2019,
     color: 'Silver',
     images: [
-      'https://source.unsplash.com/600x600/?car&id=40&image=1',
-      'https://source.unsplash.com/600x600/?car&id=40&image=2',
+      'https://www.sixt.com/fileadmin2/files/global/sideview/user_upload/fleet/png/752x500/skoda-karoq-sport-5d-grau-2020.png',
     ],
     licensePlate: '7890CDE',
     extras: ['GPS', 'Radio', 'Sunroof'],
@@ -108,12 +102,11 @@ const carsData = [
   },
   {
     make: 'BMW',
-    model: 'X5',
+    model: '1 Series',
     year: 2020,
     color: 'Black',
     images: [
-      'https://source.unsplash.com/600x600/?car&id=41&image=1',
-      'https://source.unsplash.com/600x600/?car&id=41&image=2',
+      'https://www.sixt.com/fileadmin2/files/global/sideview/user_upload/fleet/png/752x500/bmw-1er-5d-schwarz-2020.png',
     ],
     licensePlate: '8901DEF',
     extras: ['GPS', 'Radio', 'Leather seats'],
@@ -124,13 +117,12 @@ const carsData = [
     transmission: 'Automatic'
   },
   {
-    make: 'Mercedes-Benz',
-    model: 'C-Class',
+    make: 'Cupra',
+    model: 'Leon',
     year: 2021,
     color: 'White',
     images: [
-      'https://source.unsplash.com/600x600/?car&id=42&image=1',
-      'https://source.unsplash.com/600x600/?car&id=42&image=2',
+      'https://www.sixt.com/fileadmin2/files/global/sideview/user_upload/fleet/png/752x500/cupra-leon-5d-black-2021.png',
     ],
     licensePlate: '9012EFG',
     extras: ['GPS', 'Sunroof', 'Leather seats'],
@@ -141,13 +133,12 @@ const carsData = [
     transmission: 'Automatic'
   },
   {
-    make: 'Audi',
-    model: 'A4',
+    make: 'Peugeot',
+    model: '308',
     year: 2020,
     color: 'Gray',
     images: [
-      'https://source.unsplash.com/600x600/?car&id=43&image=1',
-      'https://source.unsplash.com/600x600/?car&id=43&image=2',
+      'https://www.sixt.com/fileadmin2/files/global/sideview/user_upload/fleet/png/752x500/peugeot-308-5d-black-2021.png',
     ],
     licensePlate: '0123FGH',
     extras: ['GPS', 'Radio', 'Sunroof'],
@@ -158,13 +149,12 @@ const carsData = [
     transmission: 'Automatic'
   },
   {
-    make: 'Volkswagen',
-    model: 'Golf',
+    make: 'Audi',
+    model: 'A1 Sportback',
     year: 2019,
     color: 'Blue',
     images: [
-      'https://source.unsplash.com/600x600/?car&id=44&image=1',
-      'https://source.unsplash.com/600x600/?car&id=44&image=2',
+      'https://www.sixt.com/fileadmin2/files/global/sideview/user_upload/fleet/png/752x500/audi-a1-sportback-grau-2019.png',
     ],
     licensePlate: '1234GHI',
     extras: ['GPS', 'Radio', 'Leather seats'],
@@ -175,13 +165,12 @@ const carsData = [
     transmission: 'Automatic'
   },
   {
-    make: 'Hyundai',
-    model: 'Elantra',
+    make: 'Skoda',
+    model: 'Kodiaq',
     year: 2020,
     color: 'Red',
     images: [
-      'https://source.unsplash.com/600x600/?car&id=45&image=1',
-      'https://source.unsplash.com/600x600/?car&id=45&image=2',
+      'https://www.sixt.com/fileadmin2/files/global/sideview/user_upload/fleet/png/752x500/skoda-kodiaq-suv-white-2021.png',
     ],
     licensePlate: '2345JKL',
     extras: ['GPS', 'Radio', 'Sunroof'],
@@ -189,16 +178,15 @@ const carsData = [
     doors: '4',
     passengers: '5',
     rating: 4.5,
-    transmission: 'Automatic'
+    transmission: 'Manual'
   },
   {
-    make: 'Subaru',
-    model: 'Outback',
+    make: 'Skoda',
+    model: 'kodiaq',
     year: 2019,
     color: 'Green',
     images: [
-      'https://source.unsplash.com/600x600/?car&id=46&image=1',
-      'https://source.unsplash.com/600x600/?car&id=46&image=2',
+      'https://www.sixt.com/fileadmin2/files/global/sideview/user_upload/fleet/png/752x500/skoda-kodiaq-5d-schwarz-2020.png',
     ],
     licensePlate: '3456MNO',
     extras: ['GPS', 'Radio', 'Sunroof'],
@@ -209,13 +197,12 @@ const carsData = [
     transmission: 'Automatic'
   },
   {
-    make: 'Kia',
-    model: 'Sportage',
+    make: 'Volvo',
+    model: 'XC40',
     year: 2020,
     color: 'Black',
     images: [
-      'https://source.unsplash.com/600x600/?car&id=47&image=1',
-      'https://source.unsplash.com/600x600/?car&id=47&image=2',
+      'https://www.sixt.com/fileadmin2/files/global/sideview/user_upload/fleet/png/752x500/volvo-xc40-suv-silver-2023.png',
     ],
     licensePlate: '4567PQR',
     extras: ['GPS', 'Radio', 'Leather seats'],
@@ -226,13 +213,12 @@ const carsData = [
     transmission: 'Automatic'
   },
   {
-    make: 'Jeep',
-    model: 'Wrangler',
+    make: 'Audi',
+    model: 'Q5',
     year: 2021,
     color: 'Blue',
     images: [
-      'https://source.unsplash.com/600x600/?car&id=48&image=1',
-      'https://source.unsplash.com/600x600/?car&id=48&image=2',
+      'https://www.sixt.com/fileadmin2/files/global/sideview/user_upload/fleet/png/752x500/audi-q5-suv-black-2021.png',
     ],
     licensePlate: '5678STU',
     extras: ['GPS', 'Radio', 'Off-road package'],
@@ -243,13 +229,12 @@ const carsData = [
     transmission: 'Automatic'
   },
   {
-    make: 'Lexus',
-    model: 'RX 350',
+    make: 'BMW',
+    model: '7 Series',
     year: 2020,
     color: 'Silver',
     images: [
-      'https://source.unsplash.com/600x600/?car&id=49&image=1',
-      'https://source.unsplash.com/600x600/?car&id=49&image=2',
+      'https://www.sixt.com/fileadmin2/files/global/sideview/user_upload/fleet/png/752x500/bmw-7-4d-blue-2023.png',
     ],
     licensePlate: '6789UVW',
     extras: ['GPS', 'Radio', 'Sunroof', 'Leather seats'],
@@ -260,13 +245,12 @@ const carsData = [
     transmission: 'Automatic'
   },
   {
-    make: 'Volvo',
-    model: 'XC90',
+    make: 'Fiat',
+    model: '500',
     year: 2020,
     color: 'White',
     images: [
-      'https://source.unsplash.com/600x600/?car&id=50&image=1',
-      'https://source.unsplash.com/600x600/?car&id=50&image=2',
+      'https://www.sixt.com/fileadmin2/files/global/sideview/user_upload/fleet/png/752x500/fiat-500-2d-weiss-2020.png',
     ],
     licensePlate: '7890XYZ',
     extras: ['GPS', 'Radio', 'Sunroof', 'Leather seats'],
@@ -277,13 +261,12 @@ const carsData = [
     transmission: 'Automatic'
   },
   {
-    make: 'Mazda',
-    model: 'CX-5',
+    make: 'VW',
+    model: 'Golf',
     year: 2020,
     color: 'Red',
     images: [
-      'https://source.unsplash.com/600x600/?car&id=51&image=1',
-      'https://source.unsplash.com/600x600/?car&id=51&image=2',
+      'https://www.sixt.com/fileadmin2/files/global/sideview/user_upload/fleet/png/752x500/vw-golf-4d-grey-2022.png',
     ],
     licensePlate: '8901WXY',
     extras: ['GPS', 'Radio', 'Sunroof'],
@@ -294,13 +277,12 @@ const carsData = [
     transmission: 'Automatic'
   },
   {
-    make: 'Infiniti',
-    model: 'Q50',
+    make: 'MINI',
+    model: 'Cooper',
     year: 2019,
     color: 'Black',
     images: [
-      'https://source.unsplash.com/600x600/?car&id=52&image=1',
-      'https://source.unsplash.com/600x600/?car&id=52&image=2',
+      'https://www.sixt.com/fileadmin2/files/global/sideview/user_upload/fleet/png/752x500/mini-cooper-se-3d-silver-2022.png',
     ],
     licensePlate: '9012ABC',
     extras: ['GPS', 'Radio', 'Leather seats'],
@@ -311,13 +293,12 @@ const carsData = [
     transmission: 'Automatic'
   },
   {
-    make: 'Mini',
-    model: 'Cooper',
+    make: 'Ford',
+    model: 'Focus State',
     year: 2020,
     color: 'Yellow',
     images: [
-      'https://source.unsplash.com/600x600/?car&id=53&image=1',
-      'https://source.unsplash.com/600x600/?car&id=53&image=2',
+      'https://www.sixt.com/fileadmin2/files/global/sideview/user_upload/fleet/png/752x500/ford-focus-sw-silver-2020.png',
     ],
     licensePlate: '0123DEF',
     extras: ['GPS', 'Radio', 'Sunroof', 'Leather seats'],
@@ -328,13 +309,12 @@ const carsData = [
     transmission: 'Automatic'
   },
   {
-    make: 'Porsche',
-    model: '911',
+    make: 'BMW',
+    model: '2 Series Active',
     year: 2021,
     color: 'Red',
     images: [
-      'https://source.unsplash.com/600x600/?car&id=54&image=1',
-      'https://source.unsplash.com/600x600/?car&id=54&image=2',
+      'https://www.sixt.com/fileadmin2/files/global/sideview/user_upload/fleet/png/752x500/bmw-2-activ-tourer-grey-2022.png',
     ],
     licensePlate: '1234GHI',
     extras: ['GPS', 'Radio', 'Leather seats'],
@@ -345,13 +325,12 @@ const carsData = [
     transmission: 'Automatic'
   },
   {
-    make: 'Tesla',
-    model: 'Model 3',
+    make: 'Mazda',
+    model: 'CX-30',
     year: 2020,
     color: 'White',
     images: [
-      'https://source.unsplash.com/600x600/?car&id=55&image=1',
-      'https://source.unsplash.com/600x600/?car&id=55&image=2',
+      'https://www.sixt.com/fileadmin2/files/global/sideview/user_upload/fleet/png/752x500/mazda-cx-30-4d-grau-2021.png',
     ],
     licensePlate: '2345JKL',
     extras: ['GPS', 'Autopilot', 'Leather seats'],
@@ -362,13 +341,12 @@ const carsData = [
     transmission: 'Automatic'
   },
   {
-    make: 'Land Rover',
-    model: 'Range Rover Evoque',
+    make: 'Mazda',
+    model: '6 Estate',
     year: 2021,
     color: 'Blue',
     images: [
-      'https://source.unsplash.com/600x600/?car&id=56&image=1',
-      'https://source.unsplash.com/600x600/?car&id=56&image=2',
+      'https://www.sixt.com/fileadmin2/files/global/sideview/user_upload/fleet/png/752x500/mazda-6-kombi-rot-2018.png',
     ],
     licensePlate: '3456MNO',
     extras: ['GPS', 'Radio', 'Sunroof', 'Leather seats'],
@@ -379,13 +357,12 @@ const carsData = [
     transmission: 'Automatic'
   },
   {
-    make: 'Fiat',
-    model: '500',
+    make: 'DS',
+    model: '7',
     year: 2020,
     color: 'Red',
     images: [
-      'https://source.unsplash.com/600x600/?car&id=57&image=1',
-      'https://source.unsplash.com/600x600/?car&id=57&image=2',
+      'https://www.sixt.com/fileadmin2/files/global/sideview/user_upload/fleet/png/752x500/citroen-ds7-5d-weiss-2019.png',
     ],
     licensePlate: '4567PQR',
     extras: ['GPS', 'Radio', 'Sunroof'],
@@ -396,13 +373,12 @@ const carsData = [
     transmission: 'Manual'
   },
   {
-    make: 'Buick',
-    model: 'Encore',
+    make: 'Mitsubishi',
+    model: 'Eclipse',
     year: 2019,
     color: 'Silver',
     images: [
-      'https://source.unsplash.com/600x600/?car&id=58&image=1',
-      'https://source.unsplash.com/600x600/?car&id=58&image=2',
+      'https://www.sixt.com/fileadmin2/files/global/sideview/user_upload/fleet/png/752x500/mitsubishi-eclipse-cross-suv-4d-silver-2023.png',
     ],
     licensePlate: '5678STU',
     extras: ['GPS', 'Radio', 'Sunroof', 'Heated seats'],
@@ -413,13 +389,12 @@ const carsData = [
     transmission: 'Automatic'
   },
   {
-    make: 'Mitsubishi',
-    model: 'Outlander',
+    make: 'Skoda',
+    model: 'Superb',
     year: 2020,
     color: 'White',
     images: [
-      'https://source.unsplash.com/600x600/?car&id=59&image=1',
-      'https://source.unsplash.com/600x600/?car&id=59&image=2',
+      'https://www.sixt.com/fileadmin2/files/global/sideview/user_upload/fleet/png/752x500/skoda-superb-stw-grey-2022.png',
     ],
     licensePlate: '6789UVW',
     extras: ['GPS', 'Radio', 'Sunroof'],
@@ -430,13 +405,12 @@ const carsData = [
     transmission: 'Automatic'
   },
   {
-    make: 'Genesis',
-    model: 'G80',
+    make: 'Tesla',
+    model: 'Model Y Performance',
     year: 2021,
     color: 'Blue',
     images: [
-      'https://source.unsplash.com/600x600/?car&id=60&image=1',
-      'https://source.unsplash.com/600x600/?car&id=60&image=2',
+      'https://www.sixt.com/fileadmin2/files/global/sideview/user_upload/fleet/png/752x500/tesla-y-4d-suv-weiss-2021.png',
     ],
     licensePlate: '7890XYZ',
     extras: ['GPS', 'Radio', 'Sunroof', 'Leather seats'],
